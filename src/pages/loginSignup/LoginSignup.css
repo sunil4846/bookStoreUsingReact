@@ -1,0 +1,96 @@
+.mainDiv{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #00000029;
+}
+
+.imgDiv{
+    /* border: 1px solid red; */
+    width:25%;
+    height: 50%;
+    background-color: white;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 18px;
+}
+
+.textDiv{
+    /* border: 1px solid blue; */
+    width: 25%;
+    height: 56%;
+    background-color: white;
+    z-index: 5;
+    position: relative;
+    right: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.img1{
+    width: 100%;
+    height: 80%;
+    /* border: 1px solid yellow; */
+    background-size:cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image{
+    border-radius: 100%;
+    width: 80%;
+    height: 85%;
+}
+
+.imgText{
+    width: 100%;
+    height: 20%;
+    /* border: 1px solid green; */
+}
+
+#text1{
+    font: normal normal medium 18px/24px Roboto;
+}
+
+.text2{
+    width: 70%;
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+/* .textbox{
+    border: 1px solid red;
+    width: 70%;
+    height: 18%;
+    display: flex;
+    flex-direction: column;
+} */
+
+/* .btn1{
+    width: 70%;
+}
+
+.btn2{
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+} */
+
+.blankDiv{
+    /* border: 1px solid green; */
+    width: 70%;
+    /* height: 300px; */
+}
