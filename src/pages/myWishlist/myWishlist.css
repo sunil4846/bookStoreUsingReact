@@ -59,3 +59,48 @@
     /* object-fit: contain; */
     /* -webkit-transform: translateZ(0); */
 }
+
+@media screen and (min-width:320px) and (max-width:480px) {
+    .textWishlist{
+        width: 100%;
+    }
+    
+    .detailsWish{
+        width: 100%;
+    }  
+    
+    .bookImageWish{
+        width: 60%;
+        height: 105px;
+    }
+}
+
+@media screen and (min-width:481px) and (max-width:768px) {
+    .textWishlist{
+        width: 100%;
+    }
+    
+    .detailsWish{
+        width: 100%;
+    }
+
+    .bookImageWish{
+        width: 45%;
+        height: 105px;
+    }
+}
+
+@media screen and (min-width:769px) and (max-width:1024px) {
+    .textWishlist{
+        width: 100%;
+    }
+    
+    .detailsWish{
+        width: 100%;
+    }
+
+    .bookImageWish{
+        width: 35%;
+        height: 110px;
+    }
+}

@@ -1,6 +1,6 @@
 .dashboard{
     width: 100vw;
-    height: 120vh;
+    height: 100vh;
 }
 
 .dashboardDiv{
@@ -35,4 +35,24 @@
     flex-wrap: wrap;
     width: 100%;
     justify-content: space-between;
+}
+
+.pagination{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+@media screen and (min-width:320px) and (max-width:480px) {
+    
+}
+
+@media screen and (min-width:481px) and (max-width:768px) {
+
+}
+
+@media screen and (min-width:769px) and (max-width:1024px) {
+
 }

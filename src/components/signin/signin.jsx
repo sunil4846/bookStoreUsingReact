@@ -4,6 +4,8 @@ import { login } from '../../services/UserServices';
 import TextField from '@mui/material/TextField';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import './signin.css'
+import { useNavigate } from "react-router-dom";
+import { useAuth } from '../authRoutes/auth';
 
 const theme = createTheme({
   palette: {
@@ -23,6 +25,9 @@ const regexEmail =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 function Signin() {
+  const navigate = useNavigate();
+  // const [user, setUser] = React.useState('')
+  // const auth = useAuth()
   // const [displayLoginSignup, setDisplayLoginSignup] = React.useState(true);
 
   const [signinObj, setSigninObj] = React.useState({
@@ -76,16 +81,21 @@ function Signin() {
     }
     // check entered input with backend api
     if (emailTest === true && passwordTest === true) {
-      login(signinObj).then((response) => { console.log(response); localStorage.setItem('token', response.data.result.accessToken) })
+      login(signinObj).then((response) => { console.log(response); localStorage.setItem('token', response.data.result.accessToken); navigate('/Dashboard') })
         .catch((error) => { console.log(error) })
       console.log("successfull login");
     }
   };
 
+  // var auth = localStorage.getItem("token")
+  // console.log("hii",auth);
   return (
     <div className='signinDiv'>
+      {/* {
+        auth ? navigate('/Dashboard') : null
+      } */}
       <div className='textDivSignin'>
-        
+
         <div className='textbox'>
           {/* <label style={{ textAlign: "left" }}>Email</label> */}
           <TextField id="outlined-basic" error={regexObj.emailBorder} helperText={regexObj.emailHelper} label="Email" variant="outlined" size='small' onChange={takeEmail} />

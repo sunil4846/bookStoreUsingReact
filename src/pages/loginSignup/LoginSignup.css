@@ -94,3 +94,43 @@
     width: 70%;
     /* height: 300px; */
 }
+
+@media screen and (min-width:320px) and (max-width:480px) {
+    .imgDiv{
+        display: none;
+    }
+
+    .textDiv{
+        right: 0;
+        width: 80%;
+        height: 70%;
+    }
+}
+
+@media screen and (min-width:481px) and (max-width:768px) {
+    .imgDiv{
+        display: none;
+    }
+
+    .textDiv{
+        right: 0;
+        width: 70%;
+        height: 45%;
+    }
+}
+
+@media screen and (min-width:769px) and (max-width:1024px) {
+    .imgDiv{
+        width: 35%;
+        height: 35%;
+    }
+
+    .textDiv{
+        width: 45%;
+        height: 40%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+}

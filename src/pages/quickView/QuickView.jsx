@@ -2,30 +2,96 @@ import React, { useEffect, useState } from 'react'
 import './quickView.css'
 import Header from '../../components/header/Header'
 import StarOutlineOutlinedIcon from '@mui/icons-material/StarOutlineOutlined';
-import { addToBagApi, addToWishlistApi, getCartItem } from '../../services/DataServices';
+import { addToBagApi, addToWishlistApi, getCartItem, getWishlistItem,updateApi } from '../../services/DataServices';
 import MyCart from '../MyCart/MyCart';
 
 function QuickView(props) {
-    const [getCartDetails,setGetCartDetails] = useState([])    
+    const [getCartDetails, setGetCartDetails] = useState([])
+    const [cartId, setCartId] = useState([])
+    const [getWishlistDetails, setGetWishlistDetails] = useState([])
+    const [wishlistId, setWishlistId] = useState([])
+    const [quantityAdd, setQuantityAdd] = useState([])
     const addToBag = () => {
-        // setBookObj(prevState=>({...prevState,_id:props.bookView._id}));
-        console.log(props.bookView._id);
         let data = props.bookView._id;
         addToBagApi(data).then((response) => { console.log(response); }).catch((error) => { console.log(error) })
     }
 
     const addToWishlist = () => {
         let data = props.bookView._id;
-        addToWishlistApi(data).then((response) => { console.log(response); }).catch((error) => { console.log(error) })    
+        addToWishlistApi(data).then((response) => { console.log(response); }).catch((error) => { console.log(error) })
     }
 
-    const GetCartItem = () =>{
-        getCartItem().then((response) => { console.log(response); setGetCartDetails(response.data.result)}).catch((error) => { console.log(error) })
+    const GetWishlistItem = () => {
+        getWishlistItem().then((response)=>{
+            console.log(response);
+            setWishlistId(response.data.result);
+        }).catch((error)=>{
+            console.log(error);    
+        })
     }
+
+    const GetCartItem = () => {
+        getCartItem().then((response) => {
+            console.log(response);
+            let filter = [];
+            filter = response.data.result.filter((cart) => {
+                if (cart.product_id._id === props.bookView._id) {
+                    setCartId(cart._id)
+                    setQuantityAdd(cart.quantityToBuy) 
+                    return cart;
+                }
+            })
+            setGetCartDetails(filter)
+        }).catch((error) => { console.log(error) })
+    }
+
+    // const GetWishlistItem = () => {
+    //     getWishlistItem().then((response) => {
+    //         console.log(response);
+    //         let filterWishlist = [];
+    //         filterWishlist = response.data.result.filter((wishList) => {
+    //             if (wishList.product_id._id === props.bookView._id) {
+    //                 setWishlistId(wishList._id)
+    //                 // setQuantityAdd(wishList.quantityToBuy) 
+    //                 return wishList;
+    //             }
+    //         })
+    //         setGetWishlistDetails(filterWishlist)
+    //     }).catch((error) => { console.log(error) })
+    // }
+
+    const increment = () =>{
+        let cartIdInc = {
+            id:cartId,
+            quantityToBuy: quantityAdd + 1
+        } 
+        console.log(cartIdInc);
+        updateApi(cartIdInc).then((response)=>{console.log(response);
+            GetCartItem()   
+        } ).catch((error)=> console.log(error))
+    }
+
+    const decrement = () => {
+        let cartIdInc = {
+            id:cartId,
+            quantityToBuy: quantityAdd - 1
+        } 
+        console.log(cartIdInc);
+        updateApi(cartIdInc).then((response)=>{console.log(response);
+            GetCartItem() 
+        } ).catch((error)=> console.log(error))    
+    }
+
+    useEffect(() => {
+        GetCartItem();
+        // GetWishlistItem();
+        // increment();
+        // decrement();
+    }, [])
 
     useEffect(()=>{
-        
-    })
+        GetWishlistItem();
+    },[])
 
     return (
         <div className='view'>
@@ -47,8 +113,23 @@ function QuickView(props) {
                             <img src='./images/Image22.png' alt='' className='largeBookImage' />
                         </div>
                         <div className='btnView'>
-                            <button id='bagBtn' onClick={addToBag}>ADD TO BAG</button>
-                            <button id='wishlistBtn' onClick={addToWishlist}>WISHLIST</button>
+                            {
+                                (cartId.length === 0) ?
+
+                                    <button id='bagBtn' onClick={addToBag}>ADD TO BAG</button> :
+                                    <div className='btnPM'>
+                                        <div id='btnSign' onClick={decrement}>-</div>
+                                        <div id='btnNo'>{quantityAdd}</div>
+                                        <div id='btnSign' onClick={increment}>+</div>
+                                        {/* <h4>Remove</h4> */}
+                                    </div>
+                            }
+                            {
+                                (wishlistId.length === 0) ?
+                                <button id='wishlistBtn' onClick={addToWishlist}>❤ WISHLIST</button> : 
+                                <button>❤</button>
+                            }
+                            {/* <button id='wishlistBtn' onClick={addToWishlist}>WISHLIST</button> */}
                         </div>
                     </div>
                     <div className='detailsView'>

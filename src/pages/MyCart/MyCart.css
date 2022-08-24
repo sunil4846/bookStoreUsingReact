@@ -10,7 +10,7 @@
 
 .myCart{
     width: 85%;
-    height: 100%;
+    /* height: 100%; */
     /* border: 1px solid red; */
     background-color: #FFFFFF;
 }
@@ -26,7 +26,7 @@
 .myCartBook{
     border: 1px solid #DBDBDB;
     width: 70%;
-    height: 185px;
+    /* height: 185px; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -52,6 +52,7 @@
     flex-direction: row;
     width: 50%;
     height: 60%;
+    margin-top: 25px;
 }
 
 .bookImageCart{
@@ -89,6 +90,7 @@
     background-color: #3371B5;
     color: white;
     border: none;
+    margin-bottom: 15px;
 }
 
 .boxExternal{
@@ -252,7 +254,7 @@
 
 .orderSummaryDiv{
     width: 95%;
-    height: 150px;
+    /* height: 210px; */
     /* border: 1px solid red; */
     background-color: #FFFFFF;      
 }
@@ -264,5 +266,97 @@
     background-color: #3371B5;
     color: white;
     border: none;   
+}
+
+@media screen and (min-width:320px) and (max-width:480px) {
+    .myCartBook{
+        width: 100%;
+    }   
+    
+    .bookNImg{
+        width: 100%;
+    }
+
+    .bookImageCart{
+        width: 40%;
+    }
+
+    .btnPlace{
+        width: 30%;
+    }
+
+    .customerDetails{
+        width: 100%;
+        height: 390px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .btnAdd{
+        width: 30%;    
+    }
+
+    .inputBoxNM{
+        width: 95%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .inputName{
+        width: 100%;
+    }
+
+    .inputMNumber{
+        width: 100%;
+    }
+
+    #textArea{
+        width: 95%;
+    }
+
+    .inputBoxCityS{
+        width: 95%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;    
+    }
+
+    .inputCity{
+        width: 100%;
+    }
+
+    .inputState{
+        width: 100%;
+    }
+
+    .boxExternal{
+        width: 100%;
+    }
+
+    .btnContinue{
+        width: 30%;
+    }
+
+    .orderSummary{
+        width: 100%;
+    }
+
+    .btnCheckOut{
+        width: 30%;
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (min-width:481px) and (max-width:768px) {
+
+}
+
+@media screen and (min-width:769px) and (max-width:1024px) {
+
 }
 
